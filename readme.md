@@ -20,3 +20,18 @@
 ## install the demo application
     kubectl apply -f 4-application-full-stack.yaml
 
+## verify sidecar injection
+    k get po -> there is 2 container for each pod now, sidecar injected ok
+
+## access GKE nodeport service from internet
+    gcloud compute firewall-rules create myservice --allow tcp:30080
+    gcloud compute instances list
+    http://34.69.253.8:30080/
+
+## access kiali monitoring
+    gcloud compute firewall-rules create kiali --allow tcp:31000
+    http://34.69.253.8:31000/
+    https://kiali.io/
+
+## access Jaeger UI
+    gcloud compute firewall-rules create jaeger --allow tcp:31001
