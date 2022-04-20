@@ -35,3 +35,7 @@
 
 ## access Jaeger UI
     gcloud compute firewall-rules create jaeger --allow tcp:31001
+
+## access grafana UI
+    gcloud compute firewall-rules create grafana --allow tcp:31002
+    http://34.69.253.8:31002/
