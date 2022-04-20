@@ -39,3 +39,11 @@
 ## access grafana UI
     gcloud compute firewall-rules create grafana --allow tcp:31002
     http://34.69.253.8:31002/
+
+## test istio canary release
+    while true; do curl http://34.69.253.8:30080/api/vehicles/driver/City%20Truck; echo; sleep 1; done
+
+## apply istio routing
+    cd 2
+    kubectl apply -f 6-
+
