@@ -54,4 +54,10 @@
     cd 3
     k apply -f 5 
     while true; do curl -s http://34.69.253.8:30080/ |grep title; echo; sleep 0.5; done
-    
+
+## istio ingress
+    k describe gw
+    k get svc -n istio-system
+    http://34.70.42.42/
+
+    while true; do curl -s http://34.70.42.42/ |grep title; echo; sleep 0.5; done

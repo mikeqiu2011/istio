@@ -1,3 +1,20 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: ingress-gateway-configuration
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*" # Domain name of the external website
+
+---
 kind: VirtualService
 apiVersion: networking.istio.io/v1alpha3
 metadata:
@@ -5,7 +22,10 @@ metadata:
   namespace: default
 spec:
   hosts:
-    - fleetman-webapp.default.svc.cluster.local
+    # - fleetman-webapp.default.svc.cluster.local
+    - "*" # copy the value in the gateway hosts
+  gateways:
+    - ingress-gateway-configuration # link the VS to the gateway
   http:
     - route:
         - destination:
