@@ -47,6 +47,11 @@
     cd 2
     kubectl apply -f 6-
 
-## test session stickiness of header, the header must contain x-, so that program can propogate
-    while true; do curl --header "x-myval: 1" http://34.69.253.8:30080/api/vehicles/driver/City%20Truck; echo; sleep 0.5; done
+## test session stickiness of header, the header must contain x-, so that program can propogate, it works however useSourceIp is suggested as it no additional requirement
+    while true; do curl --header "x-myval: 195" http://34.69.253.8:30080/api/vehicles/driver/City%20Truck; echo; sleep 0.5; done
 
+## canary release of front-end
+    cd 3
+    k apply -f 5 
+    while true; do curl -s http://34.69.253.8:30080/ |grep title; echo; sleep 0.5; done
+    
