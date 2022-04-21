@@ -24,7 +24,7 @@ spec:
   trafficPolicy:
     loadBalancer:
       consistentHash:
-        useSourceIp: true
+        httpHeaderName: x-myval
   subsets:
     - labels:
         app: staff-service

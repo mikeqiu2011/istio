@@ -47,3 +47,6 @@
     cd 2
     kubectl apply -f 6-
 
+## test session stickiness of header, the header must contain x-, so that program can propogate
+    while true; do curl --header "x-myval: 1" http://34.69.253.8:30080/api/vehicles/driver/City%20Truck; echo; sleep 0.5; done
+
