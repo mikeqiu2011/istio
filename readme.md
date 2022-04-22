@@ -77,3 +77,9 @@
     k apply -f 7  for deplay
     k apply -f 8  for failure
 
+## circuit breaker
+    cd 6
+    k apply 7
+    while true; do curl http://34.70.42.42/api/vehicles/driver/City%20Truck; echo; sleep 0.5; done
+    
+
