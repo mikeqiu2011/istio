@@ -64,3 +64,11 @@
 
 ## prefix
     curl -s http://34.70.42.42/experimental |grep title
+
+## dark release
+    cd 4
+    k apply -f 6
+
+    curl -s -H "my-header: canary" http://34.70.42.42 |grep title
+    curl -s http://34.70.42.42/ |grep title
+
