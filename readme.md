@@ -72,3 +72,8 @@
     curl -s -H "my-header: canary" http://34.70.42.42 |grep title
     curl -s http://34.70.42.42/ |grep title
 
+## fault injection
+    cd 5
+    k apply -f 7  for deplay
+    k apply -f 8  for failure
+
