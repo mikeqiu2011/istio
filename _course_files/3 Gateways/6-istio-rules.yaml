@@ -27,15 +27,22 @@ spec:
   gateways:
     - ingress-gateway-configuration # link the VS to the gateway
   http:
-    - route:
-        - destination:
-            host: fleetman-webapp.default.svc.cluster.local
-            subset: original
-          weight: 90
+    - match:
+        - uri:
+            prefix: "/experimental"
+        - uri:
+            prefix: "/canary"
+      route:
         - destination:
             host: fleetman-webapp.default.svc.cluster.local
             subset: experimental
-          weight: 10
+    - match:
+        - uri:
+            prefix: "/"
+      route:
+        - destination:
+            host: fleetman-webapp.default.svc.cluster.local
+            subset: original
 
 ---
 kind: DestinationRule
