@@ -81,5 +81,22 @@
     cd 6
     k apply 7
     while true; do curl http://34.70.42.42/api/vehicles/driver/City%20Truck; echo; sleep 0.5; done
+
+## strict mTLS
+    cd 7
+    k apply -f 5
+
+    gcloud compute firewall-rules create position-tracker --allow tcp:32001
+    curl http://34.69.253.8:32001/vehicles/
+
+    k apply -f enforce-mtls-only.yaml
+    k get pa -n istio-system
+
+    now below command no longer work
+    curl http://34.69.253.8:32001/vehicles/
+
+    
+
+
     
 
