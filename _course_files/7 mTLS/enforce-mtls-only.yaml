@@ -6,4 +6,5 @@ metadata:
   namespace: "istio-system"
 spec:
   mtls:
-    mode: STRICT
+    # mode: STRICT # strick mTLS does not allow http
+    mode: PERMISSIVE # still upgrade to mTLS where istio can, but still allow non-mtls
